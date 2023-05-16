@@ -17,7 +17,23 @@ const connect = function () {
   conn.on("connect", () => {
     console.log("Successfully connected to game server");
     conn.write("Name: GFM");
+    // sendMoves();
   })
+
+  // function sendMoves() {
+  //   setTimeout(() => {
+  //     conn.write("Move: up");
+  //   }, 50);
+  //   setTimeout(() => {
+  //     conn.write("Move: down");
+  //   }, 100);
+  //   setTimeout(() => {
+  //     conn.write("Move: right");
+  //   }, 150);
+  //   setTimeout(() => {
+  //     conn.write("Move: left");
+  //   }, 200);
+  // }
   return conn;
 };
 
