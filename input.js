@@ -1,33 +1,35 @@
 let connection;
 
-const handleUserInput = function (data, conn) {
-  if (data === '\u0003') {
-    process.exit(); // Terminate the game if Ctrl + C is pressed
-  } else {
-    // Handle other key inputs here
-    // For example, send "Move: up" command for the 'w' key
-    if (data === 'w') {
-      connection.write("Move: up");
-    } else if (data === 'a') {
-      connection.write("Move: left");
-    } else if (data === 's') {
-      connection.write("Move: down");
-    } else if (data === 'd') {
-      connection.write("Move: right");
-    }
-    // Add more key handlers for other movements here
-  }
-};
-
-const setupInput = (conn) => {
+const setupInput = function(conn) {
   connection = conn;
+
+  const handleUserInput = function(key) {
+    if (key === '\u0003') {
+      process.exit();
+    }
+
+    if (key === 'w') {
+      connection.write("Move: up");
+    } else if (key === 'a') {
+      connection.write("Move: left");
+    } else if (key === 's') {
+      connection.write("Move: down");
+    } else if (key === 'd') {
+      connection.write("Move: right");
+    } else if (key === 'f') {
+      connection.write("Say: Hello, everyone!");
+    } else if (key === 'g') {
+      connection.write("Say: Goodbye, everyone!");
+    }
+  }
+
   const stdin = process.stdin;
   stdin.setRawMode(true);
-  stdin.setEncoding("utf8");
+  stdin.setEncoding('utf8');
   stdin.resume();
-  stdin.on("data", (data) => {
-    handleUserInput(data, conn);
-  });
+
+  stdin.on('data', handleUserInput);
+
   return stdin;
 };
 
