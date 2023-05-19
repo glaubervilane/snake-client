@@ -20,9 +20,16 @@ const setupInput = function(conn) {
   };
 
   const sendContinuousMovement = function() {
+    if (connection.destroyed) {
+      clearInterval(movementInterval);
+      return;
+    }
     const movementCommand = `Move: ${currentDirection}`;
     connection.write(movementCommand);
   };
+  
+  const movementInterval = setInterval(sendContinuousMovement, 100);
+  
 
   const stdin = process.stdin;
   stdin.setRawMode(true);
@@ -32,7 +39,7 @@ const setupInput = function(conn) {
   stdin.on('data', handleUserInput);
 
   // Send movement commands every 100ms
-  setInterval(sendContinuousMovement, 100);
+  // setInterval(sendContinuousMovement, 100);
 
   return stdin;
 };
