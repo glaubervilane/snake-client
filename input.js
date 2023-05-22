@@ -27,9 +27,8 @@ const setupInput = function(conn) {
     const movementCommand = `Move: ${currentDirection}`;
     connection.write(movementCommand);
   };
-  
+
   const movementInterval = setInterval(sendContinuousMovement, 100);
-  
 
   const stdin = process.stdin;
   stdin.setRawMode(true);
