@@ -23,12 +23,12 @@ To run the Snake game on your local machine, follow these steps:
 
 4. Use the following keys to control the snake:
 
-  W: Move Up
-  A: Move Left
-  S: Move Down
-  D: Move Right
-  F: Say Hello to Everyone
-  G: Say Goodbye to Everyone
+  - W: Move Up
+  - A: Move Left
+  - S: Move Down
+  - D: Move Right
+  - F: Say Hello to Everyone
+  - G: Say Goodbye to Everyone
 
 ## Code Structure
 The Snake game consists of the following files:
